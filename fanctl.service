@@ -1,0 +1,11 @@
+[Unit]
+Description=Fan Controller Service
+
+[Service]
+Type=simple
+Restart=always
+RestartSec=1
+ExecStart=/usr/local/bin/fanctl.py
+
+[Install]
+WantedBy=multi-user.target
