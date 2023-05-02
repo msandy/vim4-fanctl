@@ -1,13 +1,20 @@
 #!/usr/bin/env python3
 
+import configparser
 import glob
 import os
 import sys
 import time
 
-PROBE_INTERVAL = 5
-TEMP_FAN_OFF = 40
-TEMP_FAN_MAX = 60
+config = configparser.ConfigParser()
+config.read("/etc/fanctl.conf")
+
+general = config["general"] if "general" in config else config["DEFAULT"]
+temp = config["temp"] if "temp" in config else config["DEFAULT"]
+
+PROBE_INTERVAL = general.getint("ProbeInterval", 5)
+TEMP_FAN_OFF = temp.getint("TempFanOff", 40)
+TEMP_FAN_MAX = temp.getint("TempFanMax", 60)
 
 def SetFanSpeed(percentage: int):
     if (percentage < 0 or percentage > 100):

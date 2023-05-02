@@ -9,5 +9,6 @@ Only tested on my specific system. Use at your own risk.
 1. `chmod +x fanctl.py`
 2. Put `fanctl.py` in `/usr/local/bin/`
 3. Put `fanctl.service` in `/etc/systemd/system/`
-4. `systemctl enable fanctl`
-5. `systemctl start fanctl`
+4. Put `fanctl.conf` in `/etc/`
+5. `systemctl enable fanctl`
+6. `systemctl start fanctl`
